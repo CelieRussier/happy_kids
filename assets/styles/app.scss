@@ -1,0 +1,92 @@
+@import "~bootstrap/scss/bootstrap";
+
+/* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
+$primary: #F941E6;
+$light: #FFCCFF;
+$secondary: #E3A7A7;
+$dropdown-link-hover-bg: #FCF5EE;
+
+/* ---------- FONTS ---------- */
+@font-face {
+    font-family: 'Prata';
+    src: url('../fonts/Prata/Prata-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cuprum';
+    src: url('../fonts/Cuprum/Cuprum-VariableFont_wght.ttf') format('truetype'),
+    url('../fonts/Cuprum/Cuprum-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/Karla/Karla-VariableFont_wght.ttf') format('truetype'),
+    url('../fonts/Karla/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Black.ttf') format('truetype');
+}
+
+/* ---------- GLOBAL POLICIES ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #57FFE1;
+    font-family: "Karla", sans-serif;
+    margin-top: 200px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.card-title {
+    color: #F941E6;
+    font-style: bold;
+    text-align: center;
+}
+
+.background-pink {
+    background-color: #FFCCFF;
+}
+
+/* ---------- NAV ---------- */
+
+nav {
+    background-color: #FFCCFF;
+    height: 110px;
+}
+
+.nav-text{
+    color: #F941E6;
+    text-shadow: 1px 0 0 black;
+    font-size: large;
+}
+
+header {
+margin-top: 2vh;
+}
+
+@media (min-width: 0px) and (max-width: 979px) {
+    
+
+    .logo {
+        max-height: 100px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 700px) {
+    
+    .happy-kids {
+        display: none;
+    }
+}
+
+
+
+
+

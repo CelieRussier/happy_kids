@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+{% for activity in activities %}
+        <div class="col">
+            <div class="card h-100">
+            <img src="/uploads/{{ activity.picture }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-pink">{{ activity.name}} à {{ activity.city }}</h5>
+                <p class="card-text">Description : {{ activity.description }}</p>
+            </div>
+            </div>
+        </div>
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-light background-pink fixed-top d-flex justify-content-around">
+  <div class="nav-division navbar-collapse d-flex justify-content-around">
+    
+    <div class="nav-left d-flex justify-content-between w-100">
+      <div class="navbar-nav">
+      <a class="navbar-brand nav-text" href="{{ path('app_home') }}">
+                <img src="{{ asset('build/images/logo.png') }}" class="logo" alt="logo"/>
+      </a>
+      </div>
+      <div class="navbar-nav align-self-center happy-kids">
+      <a class="navbar-brand nav-text btn" aria-current="page" href="{#{{ path('program_index') }}#}">Happy Kids</a>
+      </div>
+      <div class="navbar-nav align-self-center">
+      {% if app.user %}
+      <a class="navbar-brand nav-text btn" aria-current="page" href="{#{{ path('program_index') }}#}">Ajouter une activité</a>
+      {% endif %}
+      </div>
+      <div class="navbar-nav align-self-center">
+      {% if app.user %}
+         <a class="navbar-brand nav-text btn" href="{{ path('logout') }}"> Se déconnecter</a>
+        {% else %}
+        <a class="navbar-brand nav-text btn" href="{{ path('login') }}"> Se connecter</a>
+        {% endif %}
+      </div>
+       
+        {#{% if app.user %}
+        {{ app.user.email }}
+         <a href="{{ path('logout') }}"> Se déconnecter</a>
+        {% else %}
+        <a href="{{ path('login') }}"> Se connecter</a>
+        {% endif %}#}
+      </ul>
+    </div>
+  </div>
+</nav>
+
