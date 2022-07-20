@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ActivityRepository;
+use App\Repository\RatingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,11 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ActivityRepository $activityRepository): Response
+    public function index(ActivityRepository $activityRepository, RatingRepository $ratingRepository): Response
     {
         $activities = $activityRepository->findAll();
+        $ratings = $ratingRepository->findAll();
         return $this->render('home/index.html.twig', [
-            'activities' => $activities
+            'activities' => $activities, 'ratings' => $ratings
          ]);
     }
 

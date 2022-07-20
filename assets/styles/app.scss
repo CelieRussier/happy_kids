@@ -1,10 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 /* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
-$primary: #F941E6;
-$light: #FFCCFF;
-$secondary: #E3A7A7;
-$dropdown-link-hover-bg: #FCF5EE;
+
 
 /* ---------- FONTS ---------- */
 @font-face {
@@ -48,10 +45,15 @@ body {
     color: #F941E6;
     font-style: bold;
     text-align: center;
+    font-family: "Poppins";
 }
 
 .background-pink {
     background-color: #FFCCFF;
+}
+
+.gold-star {
+    max-height: 35px;
 }
 
 /* ---------- NAV ---------- */
@@ -63,12 +65,28 @@ nav {
 
 .nav-text{
     color: #F941E6;
-    text-shadow: 1px 0 0 black;
-    font-size: large;
+    font-family: "Poppins";
 }
 
 header {
 margin-top: 2vh;
+}
+
+.happy-kids{
+    width: 30%;
+    text-align: left;
+}
+
+.nav-happy-kids{
+    font-size: 35px;
+    font-family: "Poppins";
+    color: #F941E6;
+    text-shadow: 5px 0 0 #57FFE1;
+}
+
+.btn:hover {
+    color: #57FFE1;
+    text-shadow: 2px 0 0 black;
 }
 
 @media (min-width: 0px) and (max-width: 979px) {

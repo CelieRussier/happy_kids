@@ -41,6 +41,8 @@ class ActivityFixtures extends Fixture
 
         $activity->setDescription($faker->paragraphs(1, true));
 
+        $this->addReference('activity_' . $i, $activity);
+
         $manager->persist($activity);
         }
 

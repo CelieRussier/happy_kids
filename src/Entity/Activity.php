@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ActivityRepository::class)]
+#[Vich\Uploadable] 
 class Activity
 {
     #[ORM\Id]
@@ -25,11 +28,14 @@ class Activity
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
+    #[Vich\UploadableField(mapping: 'picture_file', fileNameProperty: 'picture')]
+     private File $pictureFile;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Rating::class, mappedBy: 'activity')]
-    private Collection $ratings;
+    private ?Collection $ratings;
 
     public function __construct()
     {
@@ -115,4 +121,24 @@ class Activity
 
         return $this;
     }
+
+     /**
+      * Get the value of pictureFile
+      */ 
+     public function getPictureFile(): ?File
+     {
+          return $this->pictureFile;
+     }
+
+     /**
+      * Set the value of pictureFile
+      *
+      * @return  self
+      */ 
+     public function setPictureFile(File $image = null): Activity
+     {
+          $this->pictureFile = $image;
+
+          return $this;
+     }
 }

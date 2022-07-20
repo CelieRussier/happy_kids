@@ -8,11 +8,11 @@
       </a>
       </div>
       <div class="navbar-nav align-self-center happy-kids">
-      <a class="navbar-brand nav-text btn" aria-current="page" href="{#{{ path('program_index') }}#}">Happy Kids</a>
+      <a class="navbar-brand nav-text nav-happy-kids" aria-current="page" href="{{ path('app_home') }}#}">Happy Kids</a>
       </div>
       <div class="navbar-nav align-self-center">
       {% if app.user %}
-      <a class="navbar-brand nav-text btn" aria-current="page" href="{#{{ path('program_index') }}#}">Ajouter une activité</a>
+      <a class="navbar-brand nav-text btn" aria-current="page" href="{{ path('app_activity_new') }}">Ajouter une activité</a>
       {% endif %}
       </div>
       <div class="navbar-nav align-self-center">
@@ -22,15 +22,8 @@
         <a class="navbar-brand nav-text btn" href="{{ path('login') }}"> Se connecter</a>
         {% endif %}
       </div>
-       
-        {#{% if app.user %}
-        {{ app.user.email }}
-         <a href="{{ path('logout') }}"> Se déconnecter</a>
-        {% else %}
-        <a href="{{ path('login') }}"> Se connecter</a>
-        {% endif %}#}
-      </ul>
     </div>
+
   </div>
 </nav>
 

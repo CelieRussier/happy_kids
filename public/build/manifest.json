@@ -21,5 +21,8 @@
   "build/images/trampoline-dunkerque.jpg": "http://localhost:8080/build/images/trampoline-dunkerque.jpg",
   "build/images/zoo.webp": "http://localhost:8080/build/images/zoo.webp",
   "build/images/zoo.jpeg": "http://localhost:8080/build/images/zoo.jpeg",
-  "build/images/atelier-peinture.jpeg": "http://localhost:8080/build/images/atelier-peinture.jpeg"
+  "build/images/atelier-peinture.jpeg": "http://localhost:8080/build/images/atelier-peinture.jpeg",
+  "build/images/gold-star.png": "http://localhost:8080/build/images/gold-star.png",
+  "build/images/Etoile_argent.svg": "http://localhost:8080/build/images/Etoile_argent.svg",
+  "build/images/etoile_argent.svg": "http://localhost:8080/build/images/etoile_argent.svg"
 }
