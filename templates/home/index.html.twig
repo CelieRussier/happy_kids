@@ -4,6 +4,15 @@
 
 {% block body %}
 
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
 {% for activity in activities %}
@@ -22,22 +31,11 @@
                         {% endfor %}
                     </p>
                 </div>
-                {% else %}
-                <p>{{ rating.age }} : {{ rating.rate}} </p>
                 {% endif %}
                 {% endfor %}
-                <button class="btn" id="open-rating">+++</button>
-                <div id="rating-zone">
-                    <p>Evaluer</p>
-                    <select>
-                        <option>0/5</option>
-                        <option>1/5</option>
-                        <option>2/5</option>
-                        <option>3/5</option>
-                        <option>4/5</option>
-                        <option>5/5</option>
-                    </select>
-                </div>
+                <button id="rating-zone">
+                    <a class="navbar-brand nav-text btn" href="{{ path('app_rating_new') }}">Evaluer</a>
+                </button>
             </div>
             </div>
         </div>

@@ -27,6 +27,16 @@
                 <th>Description</th>
                 <td>{{ activity.description }}</td>
             </tr>
+{% for rating in activity.ratings %}
+    {% if rating.rate is not same as 0 %}
+            <tr>
+                <th>{{ rating.age }} : </th>
+                {% for i in 1.. rating.rate %}
+                <td><img class="gold-star" src="/uploads/gold-star.png" alt="..."></td>
+                {% endfor %}  
+            </tr>
+    {% endif %}
+{% endfor %}
         </tbody>
     </table>
 
