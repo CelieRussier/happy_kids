@@ -23,15 +23,15 @@
                 <h5 class="card-title text-pink">{{ activity.name}} à {{ activity.city }}</h5>
                 <p class="card-text">Description : {{ activity.description }}</p>
                 {% for rating in activity.ratings %}
-                {% if rating.rate is not same as 0 %}
-                <div>
-                    <p>{{ rating.age }} : 
-                        {% for i in 1.. rating.rate %}
-                            <img class="gold-star" src="/uploads/gold-star.png" alt="...">
-                        {% endfor %}
-                    </p>
-                </div>
-                {% endif %}
+                    {% if rating.rate is not same as 0 %}
+                    <div>
+                        <p>{{ rating.age }} : 
+                            {% for i in 1.. rating.rate %}
+                                <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                            {% endfor %}
+                        </p>
+                    </div>
+                    {% endif %}
                 {% endfor %}
                 <div class="align-items-end">
                 <button id="rating-zone">

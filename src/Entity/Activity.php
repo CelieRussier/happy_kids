@@ -29,13 +29,13 @@ class Activity
     private ?string $picture = null;
 
     #[Vich\UploadableField(mapping: 'picture_file', fileNameProperty: 'picture')]
-     private File $pictureFile;
+     private ?File $pictureFile = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Rating::class, mappedBy: 'activity', cascade: ['persist', 'remove'])]
-    private ?Collection $ratings;
+    #[ORM\OneToMany(mappedBy: 'activity', targetEntity: Rating::class)]
+    private ?Collection $ratings = null;
 
     public function __construct()
     {
@@ -95,33 +95,6 @@ class Activity
         return $this;
     }
 
-    /**
-     * @return Collection<int, Rating>
-     */
-    public function getRatings(): Collection
-    {
-        return $this->ratings;
-    }
-
-    public function addRating(Rating $rating): self
-    {
-        if (!$this->ratings->contains($rating)) {
-            $this->ratings[] = $rating;
-            $rating->addActivity($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRating(Rating $rating): self
-    {
-        if ($this->ratings->removeElement($rating)) {
-            $rating->removeActivity($this);
-        }
-
-        return $this;
-    }
-
      /**
       * Get the value of pictureFile
       */ 
@@ -140,5 +113,35 @@ class Activity
           $this->pictureFile = $image;
 
           return $this;
+     }
+
+     /**
+      * @return Collection<int, Rating>
+      */
+     public function getRatings(): Collection
+     {
+         return $this->ratings;
+     }
+
+     public function addRating(Rating $rating): self
+     {
+         if (!$this->ratings->contains($rating)) {
+             $this->ratings[] = $rating;
+             $rating->setActivity($this);
+         }
+
+         return $this;
+     }
+
+     public function removeRating(Rating $rating): self
+     {
+         if ($this->ratings->removeElement($rating)) {
+             // set the owning side to null (unless already changed)
+             if ($rating->getActivity() === $this) {
+                 $rating->setActivity(null);
+             }
+         }
+
+         return $this;
      }
 }

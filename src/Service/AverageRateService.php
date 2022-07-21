@@ -13,10 +13,13 @@ class AverageRateService
         $this->ratingRepository = $ratingRepository;
     }
 
-    public function averageRateCalculator(mixed $age, mixed $city): mixed
+    public function averageRateCalculator($activities, $ratings): mixed
     {
         $averageRates = [];
 
+        //foreach( $activity in $activities) {
+
+        //}
         //$averageRates = $this->ratingRepository->findLikeAgeWithCity();
 
         

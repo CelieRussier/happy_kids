@@ -21,12 +21,11 @@ class Rating
     #[ORM\Column]
     private ?int $rate = null;
 
-    #[ORM\ManyToMany(targetEntity: Activity::class, inversedBy: 'ratings', cascade: ['persist', 'remove'])]
-    private Collection $activity;
+    #[ORM\ManyToOne(inversedBy: 'ratings')]
+    private ?Activity $activity = null;
 
     public function __construct()
     {
-        $this->activity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,26 +57,14 @@ class Rating
         return $this;
     }
 
-    /**
-     * @return Collection<int, Activity>
-     */
-    public function getActivity(): Collection
+    public function getActivity(): ?Activity
     {
         return $this->activity;
     }
 
-    public function addActivity(Activity $activity): self
+    public function setActivity(?Activity $activity): self
     {
-        if (!$this->activity->contains($activity)) {
-            $this->activity[] = $activity;
-        }
-
-        return $this;
-    }
-
-    public function removeActivity(Activity $activity): self
-    {
-        $this->activity->removeElement($activity);
+        $this->activity = $activity;
 
         return $this;
     }

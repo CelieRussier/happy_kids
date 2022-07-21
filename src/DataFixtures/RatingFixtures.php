@@ -25,7 +25,7 @@ class RatingFixtures extends Fixture implements DependentFixtureInterface
             ]);
             $rating->setAge($age);
             $rating->setRate($faker->numberBetween(0, 5));
-            $rating->addActivity($this->getReference('activity_' . $faker->numberBetween(0, 19)));
+            $rating->setActivity($this->getReference('activity_' . $faker->numberBetween(0, 19)));
     
             $manager->persist($rating);
             }
