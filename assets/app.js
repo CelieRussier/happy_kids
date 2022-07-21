@@ -11,3 +11,14 @@ import 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';
+
+//const button = document.getElementById('open-rating');
+const button = document.getElementById('open-rating');
+const ratingZone = document.getElementById('rating-zone');
+
+button.addEventListener('click', event => {
+    if( ratingZone.style.display == "none") {
+    ratingZone.style.display = "flex";
+    button.innerHTML = '---';
+    }
+});

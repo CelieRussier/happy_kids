@@ -39,6 +39,23 @@ class RatingRepository extends ServiceEntityRepository
         }
     }
 
+    public function findLikeAgeWithCity(mixed $age, mixed $city): mixed
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->join('r.age', 'age')
+            ->join('r.activity', 'a')
+            ->join('a.name', 'n')
+            ->join('a.city', 'c')
+            ->where('c LIKE :city')
+            ->andWhere('age LIKE :age')
+            ->setParameter('city', '%' . $city . '%')
+            ->setParameter('age', '%' . $age . '%')
+            //->orderBy('c.name', 'ASC')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return Rating[] Returns an array of Rating objects
 //     */

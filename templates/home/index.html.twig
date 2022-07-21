@@ -16,21 +16,33 @@
                 {% for rating in activity.ratings %}
                 {% if rating.rate is not same as 0 %}
                 <div>
-                <p>{{ rating.age }} : 
-                    {% for i in 1.. rating.rate %}
-                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
-                    {% endfor %}</p>
+                    <p>{{ rating.age }} : 
+                        {% for i in 1.. rating.rate %}
+                            <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                        {% endfor %}
+                    </p>
                 </div>
                 {% else %}
                 <p>{{ rating.age }} : {{ rating.rate}} </p>
                 {% endif %}
                 {% endfor %}
+                <button class="btn" id="open-rating">+++</button>
+                <div id="rating-zone">
+                    <p>Evaluer</p>
+                    <select>
+                        <option>0/5</option>
+                        <option>1/5</option>
+                        <option>2/5</option>
+                        <option>3/5</option>
+                        <option>4/5</option>
+                        <option>5/5</option>
+                    </select>
+                </div>
             </div>
             </div>
         </div>
 {% endfor %}
 
 </div>
-
 
 {% endblock %}
