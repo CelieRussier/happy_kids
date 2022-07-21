@@ -90,21 +90,13 @@ margin-top: 2vh;
 }
 
 @media screen and (min-width: 0px) and (max-width: 979px) {
-    
-
     .logo {
         max-height: 100px;
     }
 }
 
-@media screen and (min-width: 0px) and (max-width: 700px) {
-    
-    .happy-kids {
+@media screen and (min-width: 0px) and (max-width: 979px) {
+    .nav-happy-kids {
         display: none;
     }
 }
-
-
-
-
-

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Rating;
+use App\Entity\Activity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -42,14 +43,14 @@ class RatingRepository extends ServiceEntityRepository
     public function findLikeAgeWithCity(mixed $age, mixed $city): mixed
     {
         $queryBuilder = $this->createQueryBuilder('r')
-            ->join('r.age', 'age')
-            ->join('r.activity', 'a')
-            ->join('a.name', 'n')
-            ->join('a.city', 'c')
-            ->where('c LIKE :city')
-            ->andWhere('age LIKE :age')
-            ->setParameter('city', '%' . $city . '%')
-            ->setParameter('age', '%' . $age . '%')
+            ->join('r.activities', 'a')
+            ->join('activities.city', 'c')
+            ->addSelect('a')
+            ->addSelect('c')
+            //->where('a.city = :city')
+            //->andWhere('e LIKE :age')
+            //->setParameter('city', '%' . $city . '%')
+            //->setParameter('age', '%' . $age . '%')
             //->orderBy('c.name', 'ASC')
             ->getQuery();
 

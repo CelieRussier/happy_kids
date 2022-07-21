@@ -21,7 +21,7 @@ class Rating
     #[ORM\Column]
     private ?int $rate = null;
 
-    #[ORM\ManyToMany(targetEntity: Activity::class, inversedBy: 'ratings')]
+    #[ORM\ManyToMany(targetEntity: Activity::class, inversedBy: 'ratings', cascade: ['persist', 'remove'])]
     private Collection $activity;
 
     public function __construct()

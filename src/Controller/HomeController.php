@@ -21,4 +21,17 @@ class HomeController extends AbstractController
             'activities' => $activities, 'ratings' => $ratings
          ]);
     }
+
+    #[Route('/test', name: 'home_test')]
+    public function test(ActivityRepository $activityRepository, RatingRepository $ratingRepository): Response
+    {
+        $age = "3-6ans";
+        $city = "Delorme";
+        $test = $ratingRepository->findLikeAgeWithCity($age, $city);
+        dump($test); die();
+
+        return $this->render('home/index.html.twig', [
+            'test' => $test
+         ]);
+    }
 }

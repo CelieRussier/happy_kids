@@ -34,7 +34,7 @@ class Activity
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Rating::class, mappedBy: 'activity')]
+    #[ORM\ManyToMany(targetEntity: Rating::class, mappedBy: 'activity', cascade: ['persist', 'remove'])]
     private ?Collection $ratings;
 
     public function __construct()
