@@ -39,6 +39,30 @@ class ActivityRepository extends ServiceEntityRepository
         }
     }
 
+    public function findLikeAge(string $age)
+    {
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->join('a.ratings', 'r')
+            ->where('r.age LIKE :activity_age')
+            ->setParameter('activity_age', '%' . $age . '%')
+            //->orderBy('a.name', 'ASC')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
+    public function findLikeName(string $name)
+    {
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->where('a.name LIKE :activity_name')
+            ->setParameter('activity_name', '%' . $name . '%')
+            //->orderBy('a.name', 'ASC')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
+    
     public function findLikeAgeWithCity(mixed $city): mixed
     {
         $queryBuilder = $this->createQueryBuilder('a')

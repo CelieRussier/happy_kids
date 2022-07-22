@@ -18,5 +18,6 @@
   "build/images/trampoline-dunkerque.jpg": "http://localhost:8080/build/images/trampoline-dunkerque.jpg",
   "build/images/gold-star.png": "http://localhost:8080/build/images/gold-star.png",
   "build/images/logo.png": "http://localhost:8080/build/images/logo.png",
-  "build/images/etoile_argent.svg": "http://localhost:8080/build/images/etoile_argent.svg"
+  "build/images/etoile_argent.svg": "http://localhost:8080/build/images/etoile_argent.svg",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-a4a71c.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-a4a71c.js"
 }

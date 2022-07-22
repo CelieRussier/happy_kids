@@ -6,11 +6,19 @@
 
 {% for category, messages in app.flashes %}
     {% for message in messages %}
-        <div class="alert alert-{{ category }}">
+        <div class="background-yellow alert alert-{{ category }}">
             {{ message }}
         </div>
     {% endfor %}
 {% endfor %}
+
+<div class="mb-2">
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button>Search</button>
+{{ form_end(form) }}
+
+</div>
 
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -33,7 +41,7 @@
                     </div>
                     {% endif %}
                 {% endfor %}
-                <div class="align-items-end">
+                <div class="align-items-end navbar-nav">
                 <button id="rating-zone">
                     <a class="navbar-brand nav-text btn" href="{{ path('app_rating_new') }}">Evaluer</a>
                 </button>

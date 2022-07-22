@@ -36,7 +36,7 @@
 body {
     background-color: #57FFE1;
     font-family: "Karla", sans-serif;
-    margin-top: 200px;
+    margin-top: 150px;
     margin-left: 30px;
     margin-right: 30px;
 }
@@ -52,8 +52,27 @@ body {
     background-color: #FFCCFF;
 }
 
+.background-yellow{
+    background-color: #FCFF60;
+}
+
 .gold-star {
     max-height: 35px;
+}
+
+.btn-general {
+    background-color: #F941E6;
+    color: white;
+    height: 8vh;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Karla';
+    transition: ease 0.5s;
+}
+
+.alert{
+    font-family: "Poppins";
+    font-size: small;
 }
 
 /* ---------- NAV ---------- */
