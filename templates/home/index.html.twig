@@ -15,7 +15,7 @@
 <div class="mb-2">
 {{ form_start(form) }}
 {{ form_widget(form) }}
-<button>Search</button>
+<button class="btn-pink">Rechercher</button>
 {{ form_end(form) }}
 
 </div>
@@ -31,10 +31,10 @@
             </a>
                 <div class="card-body">
                     <h5 class="card-title text-pink"><a class="card-title text-pink" href="{{ path('app_activity_show', {'id': activity.id}) }}">{{ activity.name}} à {{ activity.city }}</a></h5>
-                    <p class="card-text">Description : {{ activity.description }}</p>
+                    <p class="card-text"><strong>Description :</strong> {{ activity.description }}</p>
                         <div class="div-button-evaluate">
                         <button class="btn-pink">
-                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer</a>
+                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer l'activité</a>
                         </button>
                         </div>
                   

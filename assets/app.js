@@ -24,7 +24,7 @@ for (const button of buttons) {
                 button.innerHTML= "Masquer les évaluations";
             
             } else {
-                ratingZone.style.display= "none";
+                ratingZone.style.display = "none";
                 button.innerHTML= "Afficher les évaluations";
             }
         });

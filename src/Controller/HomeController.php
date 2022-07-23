@@ -28,8 +28,8 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData()['search'];
-            $activities = $activityRepository->findLikeAge($search);
-            dump($activities); die();
+            $activities = $activityRepository->findLikeName($search);
+            //dump($activities); die();
         } else {
             $activities = $activityRepository->findAll();
         }

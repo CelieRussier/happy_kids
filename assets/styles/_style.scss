@@ -43,6 +43,13 @@ body {
     margin-right: 30px;
 }
 
+h5{
+    color: #F941E6;
+    font-style: bold;
+    text-align: center;
+    font-family: "Poppins";
+}
+
 .background-pink {
     background-color: #FFCCFF;
 }
@@ -64,6 +71,10 @@ body {
     display: none;
 }
 
+strong{
+    font-family: "Poppins";
+}
+
 /* ---------- BTN ---------- */
 
 .btn-pink{
@@ -83,7 +94,6 @@ body {
 .btn-pink:hover{
     font-weight: bold;
     transition: ease 0.5s;
-    font-size: large;
     background-color: #57FFE1;
     color: white;
     text-decoration: underline #57FFE1;
@@ -115,7 +125,6 @@ div>.btn-pink:hover{
 .btn-yellow:hover{
     font-weight: bold;
     transition: ease 0.5s;
-    font-size: large;
     background-color: #57FFE1;
     color: white;
     text-decoration: underline #57FFE1;
@@ -160,11 +169,6 @@ h5>a:hover{
     background-color:#FCFF60;
     color:#F941E6;
     text-decoration: underline #FCFF60;
-}
-
-.show-img{
-    width: 30vw;
-    max-width: 10vw;
 }
 
 /* ---------- NAV ---------- */
@@ -221,6 +225,46 @@ margin-top: 2vh;
     font-family: "Poppins";
 }
 
-.rating-zone{
-    display: none;
+@media screen and (min-width: 980px) {
+    .rating-zone{
+        display: initial;
+    }
+
+    #open-rating{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 979px) {
+    .rating-zone{
+        display: none;
+    }
+}
+
+.card{
+    box-shadow: rgba(194, 114, 182, 0.2) 0px 8px 24px;
+}
+
+/* ---------- SHOW ACTIVITY ---------- */
+
+.show-details{
+    background-color: white;
+}
+
+.show-img{
+    width: 30rem;
+}
+
+@media screen and (min-width: 0px) and (max-width: 992px) {
+    .show-img{
+        width: 100%;
+    }
+
+    .show-btn{
+        margin: 10px;
+    }
+
+    .show-details{
+        margin-bottom: -50px;
+    }
 }

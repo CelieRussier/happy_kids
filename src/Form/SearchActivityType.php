@@ -12,7 +12,9 @@ class SearchActivityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('search', SearchType::class)
+            ->add('search', SearchType::class, [
+                'label' => 'Rechercher une activité par nom',
+            ])
         ;
     }
 
