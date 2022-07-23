@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Activity;
 use App\Entity\Rating;
+use App\Form\FilterByAgeType;
 use App\Form\SearchActivityType;
 use App\Repository\ActivityRepository;
 use App\Repository\RatingRepository;
 use App\Service\AverageRateService;
+use App\Service\FilterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,40 +19,39 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ActivityRepository $activityRepository, RatingRepository $ratingRepository, Request $request, AverageRateService $averageRateService): Response
+    public function index(
+        ActivityRepository $activityRepository,
+        RatingRepository $ratingRepository,
+        Request $request,
+        AverageRateService $averageRateService,
+        FilterService $filterService
+        ): Response
     {
+        /* retrieve all rates by activity and age */
         $activities = $activityRepository->findAll();
-        $ratings = $ratingRepository->findAll();
-        //$averageRates = $averageRateService->averageRateCalculator($ratingRepository);
 
-        $form = $this->createForm(SearchActivityType::class);
+        /* calculate average rate for all activities and age */
+        $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);
+
+        /* retrieve filter needed by user */
+        $form = $this->createForm(FilterByAgeType::class);
         $form->handleRequest($request);
-
+        
+        /* find the activities depending on user choice */
         if ($form->isSubmitted() && $form->isValid()) {
-            $search = $form->getData()['search'];
-            $activities = $activityRepository->findLikeName($search);
-            //dump($activities); die();
+            $ageFilter = $form->getData()['age'];
+            $filteredActivitiesId = $filterService->filterByAge($averageRateService, $activityRepository, $ratingRepository, $ageFilter);
+            $idArray = [];
+            foreach ($filteredActivitiesId as $key => $value) { 
+                $idArray[]= $value;
+            };
+            $activities = $activityRepository->findBy(['id' => $idArray]);
         } else {
             $activities = $activityRepository->findAll();
         }
 
         return $this->renderForm('home/index.html.twig', [
-            'activities' => $activities, 'ratings' => $ratings, 'form' => $form
-         ]);
-    }
-
-    #[Route('/test', name: 'home_test')]
-    public function test(ActivityRepository $activityRepository): Response
-    {
-        //$city = "Rey";
-        //$test = $activityRepository->findLikeAgeWithCity($city);
-        $activity = "Zoo";
-        $age = "3-6ans";
-        $test = $activityRepository->findBy(['name' => $activity]);
-        dump($test); die();
-
-        return $this->render('home/index.html.twig', [
-            'test' => $test
+            'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge
          ]);
     }
 }

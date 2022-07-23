@@ -12,7 +12,7 @@ import 'bootstrap';
 // start the Stimulus application
 import './bootstrap';
 
-//const button = document.getElementById('open-rating');
+/* Show or hide ratings */
 const buttons = document.querySelectorAll('#open-rating');
 const ratingZones = document.querySelectorAll('.rating-zone');
 
@@ -31,20 +31,35 @@ for (const button of buttons) {
     }
 };
 
-//button.addEventListener ('click', function () {
-//    if (window.matchMedia("(max-width: 800px)").matches) {
-//  
-//        if (cardDescription.style.display == "none") {
-//        cardDescription.style.display = "flex";
-//        card.style.backgroundColor = "black";
-//        cardBody.style.color= "var(--main-second-color)";
-//        cardTitle.style.color= "white";
-//  
-//        } else {cardDescription.style.display= "none";
-//                card.style.backgroundColor= "white";
-//                cardBody.style.color= "black";
-//                cardTitle.style.color= "black";
-//                ;}
-//    };
-  
-//  }
+
+/* filter by age */
+
+/* it's a fail :-(
+const searchBtn = document.getElementById('search');
+
+const inputZeroThree = document.querySelector('input[name="0-3ans"]');
+const inputThreeSix = document.querySelector('input[name="3-6ans"]');
+const inputSixTwelve = document.querySelector('input[name="6-12ans"]');
+const inputTwelveNineNine = document.querySelector('input[name="12-99ans"]');
+
+const activityCards = document.querySelectorAll('div.activity-card');
+//activityCards.classList.add('hidden'); fonctionne
+
+const ems = document.querySelectorAll('em.zero-three');
+
+searchBtn.addEventListener('click', filter => {
+    for (const em of ems) {
+        for (let i = 0; i < length(ems); i++){
+            for (const activityCard of activityCards) {
+                em.classList.add('i');
+                if (inputZeroThree.checked == true) {
+                    const em = document.querySelector('em.zero-three').innerHTML;
+                    console.log('NOOOOO');
+                    if ( em >= 3 ) {
+                        activityCard.classList.add('hidden');
+                    }
+                }
+            }
+        }
+    }  
+});*/

@@ -14,50 +14,38 @@ class AverageRateService
         $this->ratingRepository = $ratingRepository;
     }
 
-    public function averageRateCalculator(RatingRepository $ratingRepository): mixed
+    public function averageRateCalculator(array $ratings ): int
     {
-        $activity = 131;
-        $age = "0-3ans";
-        $ratings = $ratingRepository->findLikeAgeWithActivity($activity, $age);
-        foreach($ratings as $rate => $value) {
-            $rates [] = $value;
+        /* calculate averageRate */
+
+        $rates = [];
+        foreach($ratings as $rating) {
+            $rates [] = $rating->getRate();
         }
-        dump($rates); die();
+        $averageRate = round(array_sum($rates)/count($rates));
 
-        return $rates;
+        return $averageRate;
     }
+
+    public function getAllAverageRates(ActivityRepository $activityRepository, RatingRepository $ratingRepository): array
+    {
+        $activities = $activityRepository->findAll();
+        $ageRanges = ["0-3ans", "3-6ans", "6-12ans", "12-99ans"];
+        $averageRatingByActivityByAge = [];
+
+        foreach($activities as $activity) {
+            $activityId = $activity->getId();
+            foreach ($ageRanges as $ageRange) {
+                //retrieve all the rates for one activity and for one age range
+                $ratings = $ratingRepository->findLikeAgeWithActivity($activityId, $ageRange);
+                //calculate average rate for this activity and this age range
+                $average = $this->averageRateCalculator($ratings);
+                // rajoute un élément au tableau activité
+                $averageRatingByActivityByAge[$activityId][$ageRange] = $average;
+            }
+        };
+
+        return $averageRatingByActivityByAge;
+    }
+
 }
-
-
-//if ( $rating['age'] === "0-3ans") {
-//    $rating0 [] = $rating['rate'];
-//}
-//if ( $rating['age'] === "3-6ans") {
-//    $rating3 [] = $rating['rate'];
-//}
-//if ( $rating['age'] === "6-12ans") {
-//    $rating6 [] = $rating['rate'];
-//}
-//if ( $rating['age'] === "12-99ans") {
-//    $rating12 [] = $rating['rate'];
-//}
-//}
-//$rating0 = round(array_sum($rating0) / count($rating0));
-//$rating3 = round(array_sum($rating3) / count($rating3));
-//$rating6 = round(array_sum($rating6) / count($rating6));
-//$rating12 = round(array_sum($rating12) / count($rating12));
-//dump($rating0); die();
-
-//$ratingsArray = [];
-//        foreach ($ratings as $rating) {
-//            $ratingsArray [] = $rating;
-//        };
-//
-//        $activitiesArray = [];
-//        foreach ( $activities as $activity) {
-//            $activitiesArray [] = $activity;
-//        }
-//
-//        dump($ratingsArray); die();
-//        
-//        return $ratingsArray;

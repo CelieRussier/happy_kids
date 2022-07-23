@@ -12,19 +12,15 @@
     {% endfor %}
 {% endfor %}
 
-<div class="mb-2">
 {{ form_start(form) }}
-{{ form_widget(form) }}
-<button class="btn-pink">Rechercher</button>
+    {{ form_widget(form) }}
+    <button class="btn-pink" id="search">Filtrer par âge</button>
 {{ form_end(form) }}
-
-</div>
-
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
 {% for activity in activities %}
-        <div class="col col-width">
+        <div class="col col-width activity-card">
             <div class="card h-100">
             <a href="{{ path('app_activity_show', {'id': activity.id}) }}">
             <img src="/uploads/{{ activity.picture }}" class="card-img-top" alt="...">
@@ -32,30 +28,61 @@
                 <div class="card-body">
                     <h5 class="card-title text-pink"><a class="card-title text-pink" href="{{ path('app_activity_show', {'id': activity.id}) }}">{{ activity.name}} à {{ activity.city }}</a></h5>
                     <p class="card-text"><strong>Description :</strong> {{ activity.description }}</p>
-                        <div class="div-button-evaluate">
-                        <button class="btn-pink">
-                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer l'activité</a>
-                        </button>
-                        </div>
-                  
-
-                    
-                        <div class="div-button-evaluate">
-                        <button id="open-rating" class="btn-yellow">Afficher les évaluations</button>
-                        </div>
-                        {% for rating in activity.ratings %}
-                            {% if rating.rate is not same as 0 %}
+                            
+                            {% if averageRating[activity.id]["0-3ans"] > 0 %}
                             
                             <div class="rating-zone">
-                                <p>{{ rating.age }} : 
-                                    {% for i in 1.. rating.rate %}
+                                <p>0-3ans :<em class="hidden zero-three" id="zero-three">{{ averageRating[activity.id]["0-3ans"] }}</em>
+                                    {% for i in 1.. averageRating[activity.id]["0-3ans"] %}
                                         <img class="gold-star" src="/uploads/gold-star.png" alt="...">
                                     {% endfor %}
                                 </p>
                             </div>
                             {% endif %}
-                        {% endfor %}
-                
+
+                            {% if averageRating[activity.id]["3-6ans"] > 0 %}
+                            
+                            <div class="rating-zone">
+                                <p>3-6ans :<em class="hidden three-six">{{ averageRating[activity.id]["3-6ans"] }}</em>
+                                    {% for i in 1.. averageRating[activity.id]["3-6ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+                            {% if averageRating[activity.id]["6-12ans"] > 0 %}
+                            
+                            <div class="rating-zone">
+                                <p>6-12ans :<em class="hidden six-twelve">{{ averageRating[activity.id]["6-12ans"] }}</em>
+                                    {% for i in 1.. averageRating[activity.id]["6-12ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+                            {% if averageRating[activity.id]["12-99ans"] > 0 %}
+                            
+                            <div class="rating-zone">
+                                <p>12-99ans :<em class="hidden twelve-nine">{{ averageRating[activity.id]["12-99ans"] }}</em>
+                                    {% for i in 1.. averageRating[activity.id]["12-99ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+
+                        <div class="div-button-evaluate">
+                        <button class="btn-pink">
+                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer l'activité</a>
+                        </button>
+                        </div>
+                    
+                        <div class="div-button-evaluate">
+                        <button id="open-rating" class="btn-yellow">Afficher les évaluations</button>
+                        </div>
 
                 </div>
             </div>

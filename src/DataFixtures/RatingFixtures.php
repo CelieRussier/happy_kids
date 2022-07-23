@@ -15,7 +15,7 @@ class RatingFixtures extends Fixture implements DependentFixtureInterface
         {
             $faker = Factory::create('fr_FR');
     
-            for ($i = 0; $i < 50; $i++) {
+            for ($i = 0; $i < 500; $i++) {
             $rating = new Rating();
             $age = $faker->randomElement([
                 '0-3ans',
