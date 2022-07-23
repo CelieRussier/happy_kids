@@ -26,27 +26,38 @@
 {% for activity in activities %}
         <div class="col col-width">
             <div class="card h-100">
+            <a href="{{ path('app_activity_show', {'id': activity.id}) }}">
             <img src="/uploads/{{ activity.picture }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-pink">{{ activity.name}} à {{ activity.city }}</h5>
-                <p class="card-text">Description : {{ activity.description }}</p>
-                {% for rating in activity.ratings %}
-                    {% if rating.rate is not same as 0 %}
-                    <div>
-                        <p>{{ rating.age }} : 
-                            {% for i in 1.. rating.rate %}
-                                <img class="gold-star" src="/uploads/gold-star.png" alt="...">
-                            {% endfor %}
-                        </p>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-                <div class="align-items-end navbar-nav">
-                <button id="rating-zone">
-                    <a class="navbar-brand nav-text btn" href="{{ path('app_rating_new') }}">Evaluer</a>
-                </button>
+            </a>
+                <div class="card-body">
+                    <h5 class="card-title text-pink"><a class="card-title text-pink" href="{{ path('app_activity_show', {'id': activity.id}) }}">{{ activity.name}} à {{ activity.city }}</a></h5>
+                    <p class="card-text">Description : {{ activity.description }}</p>
+                        <div class="div-button-evaluate">
+                        <button class="btn-pink">
+                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer</a>
+                        </button>
+                        </div>
+                  
+
+                    
+                        <div class="div-button-evaluate">
+                        <button id="open-rating" class="btn-yellow">Afficher les évaluations</button>
+                        </div>
+                        {% for rating in activity.ratings %}
+                            {% if rating.rate is not same as 0 %}
+                            
+                            <div class="rating-zone">
+                                <p>{{ rating.age }} : 
+                                    {% for i in 1.. rating.rate %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                
+
                 </div>
-            </div>
             </div>
         </div>
 {% endfor %}

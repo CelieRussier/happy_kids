@@ -17,17 +17,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ActivityRepository $activityRepository, RatingRepository $ratingRepository, Request $request): Response
+    public function index(ActivityRepository $activityRepository, RatingRepository $ratingRepository, Request $request, AverageRateService $averageRateService): Response
     {
         $activities = $activityRepository->findAll();
         $ratings = $ratingRepository->findAll();
+        //$averageRates = $averageRateService->averageRateCalculator($ratingRepository);
 
         $form = $this->createForm(SearchActivityType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData()['search'];
-            $activities = $activityRepository->findLikeName($search);
+            $activities = $activityRepository->findLikeAge($search);
+            dump($activities); die();
         } else {
             $activities = $activityRepository->findAll();
         }

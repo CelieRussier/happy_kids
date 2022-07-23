@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Repository\ActivityRepository;
 use App\Repository\RatingRepository;
 
 class AverageRateService
@@ -13,39 +14,50 @@ class AverageRateService
         $this->ratingRepository = $ratingRepository;
     }
 
-    public function averageRateCalculator($activities, $ratings): mixed
+    public function averageRateCalculator(RatingRepository $ratingRepository): mixed
     {
-        $averageRates = [];
-
-        //foreach( $activity in $activities) {
-
-        //}
-        //$averageRates = $this->ratingRepository->findLikeAgeWithCity();
-
-        
-        return $averageRates;
-    }
-
-
-
-    public function average(mixed $search, mixed $department): mixed
-    {
-        // initializing cakes
-        $cakes = [];
-        // if KEYWORD is set and DEPARTMENT is not
-        if (!empty($search) && (empty($department))) {
-            $cakes = $this->cakeRepository->findLikeAll($search);
-            // if DEPARTMENT is set and KEYWORD is not
-        } elseif (!empty($department) && (empty($search))) {
-            $cakes = $this->cakeRepository->findByDepartment($department);
-            // if both DEPARTMENT and KEYWORD are set
-        } elseif (!empty($search) && (!empty($department))) {
-            $cakes = $this->cakeRepository->findLikeAllWithLocation($search, $department);
-            // if neither KEYWORD nor DEPARTMENT are set
-        } elseif (empty($search) && (empty($department))) {
-            // if search is empty, display everything
-            $cakes = $this->cakeRepository->findAll();
+        $activity = 131;
+        $age = "0-3ans";
+        $ratings = $ratingRepository->findLikeAgeWithActivity($activity, $age);
+        foreach($ratings as $rate => $value) {
+            $rates [] = $value;
         }
-        return $cakes;
+        dump($rates); die();
+
+        return $rates;
     }
 }
+
+
+//if ( $rating['age'] === "0-3ans") {
+//    $rating0 [] = $rating['rate'];
+//}
+//if ( $rating['age'] === "3-6ans") {
+//    $rating3 [] = $rating['rate'];
+//}
+//if ( $rating['age'] === "6-12ans") {
+//    $rating6 [] = $rating['rate'];
+//}
+//if ( $rating['age'] === "12-99ans") {
+//    $rating12 [] = $rating['rate'];
+//}
+//}
+//$rating0 = round(array_sum($rating0) / count($rating0));
+//$rating3 = round(array_sum($rating3) / count($rating3));
+//$rating6 = round(array_sum($rating6) / count($rating6));
+//$rating12 = round(array_sum($rating12) / count($rating12));
+//dump($rating0); die();
+
+//$ratingsArray = [];
+//        foreach ($ratings as $rating) {
+//            $ratingsArray [] = $rating;
+//        };
+//
+//        $activitiesArray = [];
+//        foreach ( $activities as $activity) {
+//            $activitiesArray [] = $activity;
+//        }
+//
+//        dump($ratingsArray); die();
+//        
+//        return $ratingsArray;

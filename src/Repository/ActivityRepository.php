@@ -43,9 +43,9 @@ class ActivityRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('a')
             ->join('a.ratings', 'r')
+            ->addSelect('r')
             ->where('r.age LIKE :activity_age')
             ->setParameter('activity_age', '%' . $age . '%')
-            //->orderBy('a.name', 'ASC')
             ->getQuery();
 
         return $queryBuilder->getResult();
@@ -56,7 +56,6 @@ class ActivityRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('a')
             ->where('a.name LIKE :activity_name')
             ->setParameter('activity_name', '%' . $name . '%')
-            //->orderBy('a.name', 'ASC')
             ->getQuery();
 
         return $queryBuilder->getResult();

@@ -1,0 +1,226 @@
+/* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
+$primary: #F941E6;
+//$light: #FCF5EE;
+//$secondary: #E3A7A7;
+//$dropdown-link-hover-bg: #FCF5EE;
+
+
+/* ---------- FONTS ---------- */
+@font-face {
+    font-family: 'Prata';
+    src: url('../fonts/Prata/Prata-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cuprum';
+    src: url('../fonts/Cuprum/Cuprum-VariableFont_wght.ttf') format('truetype'),
+    url('../fonts/Cuprum/Cuprum-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/Karla/Karla-VariableFont_wght.ttf') format('truetype'),
+    url('../fonts/Karla/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Black.ttf') format('truetype');
+}
+
+/* ---------- GLOBAL POLICIES ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #57FFE1;
+    font-family: "Karla", sans-serif;
+    margin-top: 150px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.background-pink {
+    background-color: #FFCCFF;
+}
+
+.background-yellow{
+    background-color: #FCFF60;
+}
+
+.gold-star {
+    max-height: 35px;
+}
+
+.alert{
+    font-family: "Poppins";
+    font-size: small;
+}
+
+.hidden{
+    display: none;
+}
+
+/* ---------- BTN ---------- */
+
+.btn-pink{
+    border:#F941E6;
+    border-radius: 5px;
+    background-color: #F941E6;
+    color: white;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-decoration: underline #F941E6;
+}
+
+.btn-pink:hover{
+    font-weight: bold;
+    transition: ease 0.5s;
+    font-size: large;
+    background-color: #57FFE1;
+    color: white;
+    text-decoration: underline #57FFE1;
+}
+
+div>.btn-pink:hover{
+    color:#F941E6;
+}
+
+.div-button-evaluate{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-yellow{
+    border: #FCFF60;
+    border-radius: 5px;
+    background-color:#FCFF60;
+    color:#F941E6;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-decoration: underline #FCFF60;
+}
+
+.btn-yellow:hover{
+    font-weight: bold;
+    transition: ease 0.5s;
+    font-size: large;
+    background-color: #57FFE1;
+    color: white;
+    text-decoration: underline #57FFE1;
+}
+
+.btn-general {
+    background-color: #F941E6;
+    color: white;
+    height: 8vh;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Karla';
+    transition: ease 0.5s;
+}
+
+a{
+    text-decoration: none;
+}
+
+h5>a:hover{
+    color:#57FFE1;
+}
+
+.show-btn{
+    border: #FCFF60;
+    border-radius: 5px;
+    background-color:#F941E6;
+    color:white;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-decoration: underline #F941E6;
+}
+
+.show-btn:hover{
+    font-weight: bold;
+    transition: ease 0.5s;
+    font-size: large;
+    background-color:#FCFF60;
+    color:#F941E6;
+    text-decoration: underline #FCFF60;
+}
+
+.show-img{
+    width: 30vw;
+    max-width: 10vw;
+}
+
+/* ---------- NAV ---------- */
+
+nav {
+    background-color: #FFCCFF;
+    height: 110px;
+}
+
+.nav-text{
+    color: #F941E6;
+    font-family: "Poppins";
+}
+
+header {
+margin-top: 2vh;
+}
+
+.happy-kids{
+    width: 30%;
+    text-align: left;
+}
+
+.nav-happy-kids{
+    font-size: 35px;
+    font-family: "Poppins";
+    color: #F941E6;
+    text-shadow: 5px 0 0 #57FFE1;
+}
+
+.btn:hover {
+    color: #57FFE1;
+    text-shadow: 2px 0 0 black;
+}
+
+@media screen and (min-width: 0px) and (max-width: 979px) {
+    .logo {
+        max-height: 100px;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 979px) {
+    .nav-happy-kids {
+        display: none;
+    }
+}
+
+/* ---------- CARD ---------- */
+
+.card-title {
+    color: #F941E6;
+    font-style: bold;
+    text-align: center;
+    font-family: "Poppins";
+}
+
+.rating-zone{
+    display: none;
+}

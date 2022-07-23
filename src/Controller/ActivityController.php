@@ -42,7 +42,6 @@ class ActivityController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_activity_show', methods: ['GET'])]
     public function show(Activity $activity): Response
     {
