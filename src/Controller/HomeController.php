@@ -54,4 +54,25 @@ class HomeController extends AbstractController
             'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge
          ]);
     }
+
+    #[Route('/redirect', name: 'redirect')]
+    public function reinitialize(
+        ActivityRepository $activityRepository,
+        Request $request,
+        AverageRateService $averageRateService,
+        RatingRepository $ratingRepository
+        ): Response
+    {   
+        /* retrieve all rates by activity and age */
+        $activities = $activityRepository->findAll();
+
+        /* calculate average rate for all activities and age */
+        $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);
+
+        $form = $this->createForm(FilterByAgeType::class);
+
+        return $this->renderForm('home/index.html.twig', [
+            'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge
+         ]);
+    }
 }
