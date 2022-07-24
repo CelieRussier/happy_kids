@@ -10,6 +10,7 @@ import './styles/app.scss';
 import 'bootstrap';
 import './scripts/show_rating.js';
 import './scripts/reinitialize_filter.js';
+import './scripts/results_number';
 
 // start the Stimulus application
 import './bootstrap';

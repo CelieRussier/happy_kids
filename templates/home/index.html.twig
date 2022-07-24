@@ -20,7 +20,7 @@
     </div>
 {{ form_end(form) }}
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4" id="container-rating-zone">
 
 {% for activity in activities %}
         <div class="col col-width activity-card">
@@ -28,7 +28,7 @@
             <a href="{{ path('app_activity_show', {'id': activity.id}) }}">
             <img src="/uploads/{{ activity.picture }}" class="card-img-top" alt="...">
             </a>
-                <div class="card-body">
+                <div class="card-body" >
                     <h5 class="card-title text-pink"><a class="card-title text-pink" href="{{ path('app_activity_show', {'id': activity.id}) }}">{{ activity.name}} à {{ activity.city }}</a></h5>
                     <p class="card-text"><strong>Description :</strong> {{ activity.description }}</p>
                             
