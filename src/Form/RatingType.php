@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Activity;
 use App\Entity\Rating;
+use App\Repository\ActivityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -15,13 +16,6 @@ class RatingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('activity', EntityType::class, [
-                'class' => Activity::class,
-                'choice_label' => function (Activity $activity) {
-                    return $activity->getName() . ' -  ' . $activity->getCity();
-                },
-                'label' => 'Activité'
-            ])
             ->add('age', ChoiceType::class, [
                 'label' => "Catégorie d'âge",
                 'choices' => ['0-3ans' => '0-3ans', '3-6ans' => '3-6ans', '6-12ans' => '6-12ans', '12-99ans' => '12-99ans'],

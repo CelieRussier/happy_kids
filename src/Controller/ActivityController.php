@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Activity;
 use App\Entity\Rating;
 use App\Form\ActivityType;
+use App\Form\RatingType;
 use App\Repository\ActivityRepository;
 use App\Repository\RatingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,6 +50,29 @@ class ActivityController extends AbstractController
     {
         return $this->render('activity/show.html.twig', [
             'activity' => $activity,
+        ]);
+    }
+
+    #[Route('/{id}/new-rating', name: 'app_activity_new_rating', methods: ['GET', 'POST'])]
+    public function newRating(Request $request, RatingRepository $ratingRepository, ActivityRepository $activityRepository, int $id): Response
+    {
+        $activity = $activityRepository->findOneBy(['id' => $id]);
+        $rating = new Rating();
+        $rating->setActivity($activity);
+        $form = $this->createForm(RatingType::class, $rating);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ratingRepository->add($rating, true);
+
+            $this->addFlash('success', "Votre évaluation a bien été prise en compte !");
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        }
+        
+        return $this->renderForm('rating/new.html.twig', [
+            'rating' => $rating,
+            'form' => $form,
+            'activity' => $activity
         ]);
     }
 

@@ -14,11 +14,11 @@
 
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <div>
-    <button class="btn-pink" id="search">Filtrer par âge</button>
+    <div class="mb-4 mt-1">
+    <button class="btn-pink" id="search" class="">Filtrer par âge</button>
     <button class="btn-pink" id="reinitialize">Réinitialiser</button>
-{{ form_end(form) }}
     </div>
+{{ form_end(form) }}
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -79,7 +79,7 @@
 
                         <div class="div-button-evaluate">
                         <button class="btn-pink">
-                            <a class="btn-pink" href="{{ path('app_rating_new') }}">Evaluer l'activité</a>
+                            <a class="btn-pink" href="{{ path('app_activity_new_rating', {'id': activity.id}) }}">Evaluer l'activité</a>
                         </button>
                         </div>
                     
