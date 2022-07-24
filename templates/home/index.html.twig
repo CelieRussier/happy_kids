@@ -35,7 +35,7 @@
                             {% if averageRating[activity.id]["0-3ans"] > 0 %}
                             
                             <div class="rating-zone">
-                                <p>0-3ans :<em class="hidden zero-three" id="zero-three">{{ averageRating[activity.id]["0-3ans"] }}</em>
+                                <p>0-3ans :
                                     {% for i in 1.. averageRating[activity.id]["0-3ans"] %}
                                         <img class="gold-star" src="/uploads/gold-star.png" alt="...">
                                     {% endfor %}
@@ -46,7 +46,7 @@
                             {% if averageRating[activity.id]["3-6ans"] > 0 %}
                             
                             <div class="rating-zone">
-                                <p>3-6ans :<em class="hidden three-six">{{ averageRating[activity.id]["3-6ans"] }}</em>
+                                <p>3-6ans :
                                     {% for i in 1.. averageRating[activity.id]["3-6ans"] %}
                                         <img class="gold-star" src="/uploads/gold-star.png" alt="...">
                                     {% endfor %}
@@ -57,7 +57,7 @@
                             {% if averageRating[activity.id]["6-12ans"] > 0 %}
                             
                             <div class="rating-zone">
-                                <p>6-12ans :<em class="hidden six-twelve">{{ averageRating[activity.id]["6-12ans"] }}</em>
+                                <p>6-12ans :
                                     {% for i in 1.. averageRating[activity.id]["6-12ans"] %}
                                         <img class="gold-star" src="/uploads/gold-star.png" alt="...">
                                     {% endfor %}
@@ -68,15 +68,19 @@
                             {% if averageRating[activity.id]["12-99ans"] > 0 %}
                             
                             <div class="rating-zone">
-                                <p>12-99ans :<em class="hidden twelve-nine">{{ averageRating[activity.id]["12-99ans"] }}</em>
+                                <p>12-99ans :
                                     {% for i in 1.. averageRating[activity.id]["12-99ans"] %}
                                         <img class="gold-star" src="/uploads/gold-star.png" alt="...">
                                     {% endfor %}
                                 </p>
                             </div>
                             {% endif %}
+                
+            </div>
+       
 
 
+                    <div class="card-body">
                         <div class="div-button-evaluate">
                         <button class="btn-pink">
                             <a class="btn-pink" href="{{ path('app_activity_new_rating', {'id': activity.id}) }}">Evaluer l'activité</a>
@@ -86,10 +90,10 @@
                         <div class="div-button-evaluate">
                         <button id="open-rating" class="btn-yellow">Afficher les évaluations</button>
                         </div>
-
-                </div>
+                    </div>
             </div>
-        </div>
+         </div>
+
 {% endfor %}
 
 </div>

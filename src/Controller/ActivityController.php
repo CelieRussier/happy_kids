@@ -8,6 +8,7 @@ use App\Form\ActivityType;
 use App\Form\RatingType;
 use App\Repository\ActivityRepository;
 use App\Repository\RatingRepository;
+use App\Service\AverageRateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,10 +47,17 @@ class ActivityController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_activity_show', methods: ['GET'])]
-    public function show(Activity $activity): Response
+    public function show(
+        Activity $activity,
+        AverageRateService $averageRateService,
+        ActivityRepository $activityRepository,
+        RatingRepository $ratingRepository
+        ): Response
     {
+        $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);
+
         return $this->render('activity/show.html.twig', [
-            'activity' => $activity,
+            'activity' => $activity, 'averageRating' => $averageRatingByActivityByAge
         ]);
     }
 

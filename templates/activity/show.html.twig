@@ -18,23 +18,51 @@
         <div class="m-3"><h5 class="card-title">{{ activity.name }} à {{ activity.city }}</h5></div>
         <div class="m-3"><strong>Ville :</strong> {{ activity.city }}</div>
         <div class="m-3"><strong>Description : </strong>{{ activity.description }}</div>
-        <table class="m-3">
-            <tbody>
-                <tr>
-                    <th><strong>Evaluations :</strong></th>
-                </tr>
-                {% for rating in activity.ratings %}
-                {% if rating.rate is not same as 0 %}
-                <tr>
-                    <th>{{ rating.age }} : </th>
-                    {% for i in 1.. rating.rate %}
-                    <td class="d-inline-block justify-content-start"><img class="gold-star" src="/uploads/gold-star.png" alt="..."></td>
-                    {% endfor %}  
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="m-3"><strong>Evaluations : </strong></div>
+
+                            {% if averageRating[activity.id]["0-3ans"] > 0 %}
+
+                            <div class"m-3">
+                                <p>0-3ans :
+                                    {% for i in 1.. averageRating[activity.id]["0-3ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+                            {% if averageRating[activity.id]["3-6ans"] > 0 %}
+            
+                            <div class="m-3">
+                                <p>3-6ans :
+                                    {% for i in 1.. averageRating[activity.id]["3-6ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+                            {% if averageRating[activity.id]["6-12ans"] > 0 %}
+                            
+                            <div class="m-3">
+                                <p>6-12ans :
+                                    {% for i in 1.. averageRating[activity.id]["6-12ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+
+                            {% if averageRating[activity.id]["12-99ans"] > 0 %}
+                            
+                            <div class="m-3">
+                                <p>12-99ans :
+                                    {% for i in 1.. averageRating[activity.id]["12-99ans"] %}
+                                        <img class="gold-star" src="/uploads/gold-star.png" alt="...">
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
     </div>
 </div>
 </div>
@@ -43,9 +71,9 @@
 
 <div class="d-flex justify-content-center m-5">
 
-    <button class="show-btn m-5"><a class="show-btn" href="{{ path('app_home') }}">back</a></button>
+    <button class="btn-pink m-5"><a class="btn-pink" href="{{ path('app_home') }}">back</a></button>
     {% if is_granted('ROLE_ADMIN') %}
-    <button class="show-btn m-5"><a class="show-btn" href="{{ path('app_activity_edit', {'id': activity.id}) }}">edit</a></button>
+    <button class="btn-pink m-5"><a class="btn-pink" href="{{ path('app_activity_edit', {'id': activity.id}) }}">edit</a></button>
     {{ include('activity/_delete_form.html.twig') }}
     {% endif %}
 

@@ -9,7 +9,11 @@ use App\Service\AverageRateService;
 class FilterService
 {   
     /* List activitiesId by age */
-    public function filterByAge(AverageRateService $averageRateService, ActivityRepository $activityRepository, RatingRepository $ratingRepository, $age)
+    public function filterByAge(
+        AverageRateService $averageRateService,
+        ActivityRepository $activityRepository,
+        RatingRepository $ratingRepository,
+        $age): array
     {
         /* retrieve the average rates */
         $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);

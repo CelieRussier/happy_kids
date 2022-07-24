@@ -1,9 +1,5 @@
 /* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
 $primary: #F941E6;
-//$light: #FCF5EE;
-//$secondary: #E3A7A7;
-//$dropdown-link-hover-bg: #FCF5EE;
-
 
 /* ---------- FONTS ---------- */
 @font-face {
@@ -267,4 +263,23 @@ margin-top: 2vh;
     .show-details{
         margin-bottom: -50px;
     }
+}
+
+/* ---------- RATING FORM ---------- */
+
+#rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+#rating>fieldset{
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+div#rating-btns>button.btn-pink{
+    padding-right: 50px;
+    padding-left: 50px;
 }

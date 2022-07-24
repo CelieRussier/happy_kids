@@ -1,6 +1,9 @@
-<div>
+<div class="">
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="text-center" id="rating-btns">
+    <button class="btn-pink" id="search">{{ button_label|default('Valider') }}</button>
+    <button class="btn-pink" id="back-home"><a href="{{ path('app_home') }}" class="btn-pink">Retour</a></button>
+    </div class="">
 {{ form_end(form) }}
 </div>

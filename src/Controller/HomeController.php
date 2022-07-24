@@ -27,49 +27,27 @@ class HomeController extends AbstractController
         FilterService $filterService
         ): Response
     {
-        /* retrieve all rates by activity and age */
+        /* 1/retrieve all rates by activity and age */
         $activities = $activityRepository->findAll();
 
-        /* calculate average rate for all activities and age */
+        /* 2/calculate average rate for all activities and age */
         $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);
 
         /* retrieve filter needed by user */
         $form = $this->createForm(FilterByAgeType::class);
         $form->handleRequest($request);
         
-        /* find the activities depending on user choice */
+        /* 3/find the activities depending on filter */
         if ($form->isSubmitted() && $form->isValid()) {
             $ageFilter = $form->getData()['age'];
             $filteredActivitiesId = $filterService->filterByAge($averageRateService, $activityRepository, $ratingRepository, $ageFilter);
-            $idArray = [];
-            foreach ($filteredActivitiesId as $key => $value) { 
-                $idArray[]= $value;
+            foreach ($filteredActivitiesId as $key => $id) { 
+                $idsOfActivitiesFiltered[]= $id;
             };
-            $activities = $activityRepository->findBy(['id' => $idArray]);
+            $activities = $activityRepository->findBy(['id' => $idsOfActivitiesFiltered]);
         } else {
             $activities = $activityRepository->findAll();
         }
-
-        return $this->renderForm('home/index.html.twig', [
-            'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge
-         ]);
-    }
-
-    #[Route('/redirect', name: 'redirect')]
-    public function reinitialize(
-        ActivityRepository $activityRepository,
-        Request $request,
-        AverageRateService $averageRateService,
-        RatingRepository $ratingRepository
-        ): Response
-    {   
-        /* retrieve all rates by activity and age */
-        $activities = $activityRepository->findAll();
-
-        /* calculate average rate for all activities and age */
-        $averageRatingByActivityByAge = $averageRateService->getAllAverageRates($activityRepository, $ratingRepository);
-
-        $form = $this->createForm(FilterByAgeType::class);
 
         return $this->renderForm('home/index.html.twig', [
             'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge

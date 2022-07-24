@@ -21,12 +21,14 @@ class RatingType extends AbstractType
                 'choices' => ['0-3ans' => '0-3ans', '3-6ans' => '3-6ans', '6-12ans' => '6-12ans', '12-99ans' => '12-99ans'],
                 'expanded' => true,
                 'multiple' => false,
+                'required' =>false
                 ])
             ->add('rate', ChoiceType::class, [
                 'label' => "Evaluation",
                 'choices' => ['0' => '0', '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'],
                 'expanded' => true,
                 'multiple' => false,
+                'required' => false
                 ])
         ;
     }
