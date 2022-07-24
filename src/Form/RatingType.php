@@ -2,10 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Activity;
 use App\Entity\Rating;
-use App\Repository\ActivityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;

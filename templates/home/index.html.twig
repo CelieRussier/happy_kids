@@ -86,7 +86,12 @@
                             <a class="btn-pink" href="{{ path('app_activity_new_rating', {'id': activity.id}) }}">Evaluer l'activité</a>
                         </button>
                         </div>
-                    
+
+{# for future embedded controller
+<ul>
+{{ render(controller('App\\Controller\\ActivityController::newRating', {id: activity.id})) }}
+</ul>#}
+
                         <div class="div-button-evaluate">
                         <button id="open-rating" class="btn-yellow">Afficher les évaluations</button>
                         </div>

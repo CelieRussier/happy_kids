@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Activity;
-use App\Entity\Rating;
 use App\Form\FilterByAgeType;
-use App\Form\SearchActivityType;
 use App\Repository\ActivityRepository;
 use App\Repository\RatingRepository;
 use App\Service\AverageRateService;
@@ -47,7 +44,7 @@ class HomeController extends AbstractController
             $activities = $activityRepository->findBy(['id' => $idsOfActivitiesFiltered]);
         } else {
             $activities = $activityRepository->findAll();
-        }
+        };
 
         return $this->renderForm('home/index.html.twig', [
             'activities' => $activities, 'form' => $form, 'averageRating' => $averageRatingByActivityByAge
