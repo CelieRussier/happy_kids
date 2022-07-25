@@ -13,7 +13,7 @@ class ActivityFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 40; $i++) {
         $activity = new Activity();
         $name = $faker->randomElement([
             'Accrobranche',

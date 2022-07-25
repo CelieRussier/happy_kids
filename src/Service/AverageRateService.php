@@ -22,7 +22,11 @@ class AverageRateService
         foreach($ratings as $rating) {
             $rates [] = $rating->getRate();
         }
-        $averageRate = round(array_sum($rates)/count($rates));
+        if (!empty($rates)) {
+            $averageRate = round(array_sum($rates)/count($rates));
+        } else {
+            $averageRate = 0;
+        }
 
         return $averageRate;
     }
